@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SemantleGame.ViewModels
+{
+    public class MainWindowViewModel : ViewModelBase
+    {
+        private ViewModelBase? _currentViewModel;
+        public ViewModelBase CurrentViewModel
+        {
+            get => _currentViewModel!;
+            set
+            {
+                _currentViewModel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MainWindowViewModel()
+        {
+            // 시작 화면
+            CurrentViewModel = new StartViewModel(this);
+        }
+
+        public void Navigate(ViewModelBase vm)
+        {
+            CurrentViewModel = vm;
+        }
+    }
+}

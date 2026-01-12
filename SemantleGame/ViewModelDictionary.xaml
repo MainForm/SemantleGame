@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:SemantleGame.ViewModels"
+                    xmlns:view="clr-namespace:SemantleGame.Views">
+
+    <DataTemplate DataType="{x:Type vm:StartViewModel}">
+            <view:StartView />
+        </DataTemplate>
+</ResourceDictionary>
