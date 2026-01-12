@@ -8,10 +8,13 @@ namespace SemantleGame.ViewModels
     {
         private readonly MainWindowViewModel _mainViewMode;
         
-        public StartViewModel(MainWindowViewModel mainViewMode)
+        public StartViewModel(MainWindowViewModel mainViewModel)
         {
-            _mainViewMode = mainViewMode;
+            _mainViewMode = mainViewModel;
         }
 
     }
+
+
+
 }

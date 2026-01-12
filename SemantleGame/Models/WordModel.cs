@@ -7,25 +7,10 @@ using SemantleGame.ViewModels;
 
 namespace SemantleGame.Models
 {
-    public class WordModel : ViewModelBase
+    public class WordModel
     {
-        private string  _name;
+        public string? Word { get; set; }       // 단어
+        public float[]? Vector { get; set; }   // 벡터값
 
-        public string Name
-        {
-            get => _name;
-        }
-
-        private float[] _vectors;
-
-        public float[] Vectors
-        {
-            get => _vectors;
-        }
-
-        public WordModel(string stringValue)
-        {
-            
-        }
     }
 }
