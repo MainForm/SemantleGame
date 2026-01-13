@@ -1,31 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 
 using SemantleGame.Services;
 using SemantleGame.ViewModels;
 
 namespace SemantleGame.Models
 {
-    public class WordModel : ViewModelBase
+    // INotifyPropertyChanged
+    public class WordModel : ViewModelBase, INotifyPropertyChanged
     {
-        private string  _name;
+        public string? Word { get; set; }       // 단어
+        public float[]? Vector { get; set; }   // 벡터값 -> 소수점
 
-        public string Name
+        public WordModel(string word, float[] vector)
         {
-            get => _name;
-        }
-
-        private float[] _vectors;
-
-        public float[] Vectors
-        {
-            get => _vectors;
-        }
-
-        public WordModel(string stringValue)
-        {
-            
+            Word = word;
+            Vector = vector;
         }
     }
 }
