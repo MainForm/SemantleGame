@@ -62,7 +62,7 @@
                 </Grid>
 
                 <Grid Grid.Row="2">
-                    <DataGrid ItemsSource="{Binding SubmittedWords}"
+                    <DataGrid ItemsSource="{Binding InputHistory}"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
@@ -86,16 +86,16 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Index"
-                            Binding="{Binding Index}"
+                            Binding="{Binding Idx}"
                             ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTextColumn Header="Word"
-                            Binding="{Binding Word}"
+                            Binding="{Binding UserInputWord}"
                             ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTextColumn Header="Similarity"
                             Binding="{Binding Similarity}"
                             ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTextColumn Header="Rank"
-                                    Binding="{Binding SimilarityRank}"
+                                    Binding="{Binding Ranking}"
                                     ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTemplateColumn Header="Rank"
                                 Width="200">
@@ -104,7 +104,7 @@
                                         <ProgressBar
                                             Minimum="0"
                                             Maximum="1000"
-                                            Value="{Binding SimilarityRank}"
+                                            Value="{Binding Ranking}"
                                             Height="20"
                                             Margin="8,0" />
                                     </DataTemplate>

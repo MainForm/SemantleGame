@@ -74,11 +74,13 @@ namespace SemantleGame.ViewModels
             // 올바른 제네릭 타입 사용: Tuple<string, float> 또는 ValueTuple<string, float>
             WordModel targetModel = _WordDic[_Ans];
             var tm = new List<(string word, float score)>();
+            int idx = 0;
             foreach(var item in _WordDic)
             {
-                if (item.Key == _Ans) continue;
+                if (idx > 1000) break;
                 float sim = CalculateCos(targetModel, item.Value);
                 tm.Add((item.Key, sim));
+                idx++;
             }
 
             var sortedList = tm.OrderByDescending(x => x.score).ToList();
@@ -115,7 +117,6 @@ namespace SemantleGame.ViewModels
             {
                 // 위에 레이블로 떠야 함 -> 임시
                 MessageBox.Show("사전에 없는 단어입니다.");
-                InputWord = "";
                 return;
             }
 
@@ -123,22 +124,21 @@ namespace SemantleGame.ViewModels
             if (InputHistory.Any(x => x.UserInputWord == InputWord))
             {
                 MessageBox.Show("이미 입력한 단어입니다.");
-                InputWord = "";
                 return;
             }
             // 정답
             if(InputWord == _Ans)
             {
                 MessageBox.Show("정답입니다! 게임 승리!");
-                InputWord = "";
             }
 
             // 다 통과하면 코사인 유사도 계산
             float sim = CalculateCos(_WordDic[InputWord], _WordDic[_Ans]);
             if (_RankingMap.ContainsKey(InputWord)) rank = _RankingMap[InputWord];
-            else rank = 1001;
+            else rank = 1000;
 
-            UserLogModel user = new UserLogModel(cnt, InputWord, sim, _RankingMap[InputWord]);
+            UserLogModel user = new UserLogModel(cnt, InputWord, sim, rank);
+            InputHistory.Add(user);
             InputWord = "";
         }
     }

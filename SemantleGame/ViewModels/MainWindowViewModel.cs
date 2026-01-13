@@ -22,13 +22,11 @@ namespace SemantleGame.ViewModels
         }
 
         //IFileService _fileReader;
-        Dictionary<string, WordModel> dic;
         public MainWindowViewModel()
         {
             // 시작 화면
             CurrentViewModel = new StartViewModel(this);
 
-            _fileReader = fileReader;
         }
 
         public void Navigate(ViewModelBase vm)
