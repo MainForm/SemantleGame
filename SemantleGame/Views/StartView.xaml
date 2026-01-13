@@ -5,14 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SemantleGame.Views"
              xmlns:vm="clr-namespace:SemantleGame.ViewModels"
+             xmlns:con="clr-namespace:SemantleGame.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Background="White"
              d:DataContext="{d:DesignInstance vm:StartViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <con:IntRangeToTextConverter x:Key="RankRangeConverter"
+                                     Min="0"
+                                     Max="1000"
+                                     ErrorText="1000 이상"/>
+    </UserControl.Resources>
     <materialDesign:DialogHost Identifier="RootDialog" DialogTheme="Inherit">
         <Grid>
-            <Grid Width="500">
+            <Grid Width="600">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="auto"/>
@@ -93,7 +100,7 @@
                             Binding="{Binding Similarity}"
                             ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTextColumn Header="Rank"
-                                    Binding="{Binding Ranking}"
+                                    Binding="{Binding Ranking, Converter={StaticResource RankRangeConverter}}"
                                     ElementStyle="{StaticResource CenterTextStyle}" />
                             <DataGridTemplateColumn Header="Rank"
                                 Width="200">

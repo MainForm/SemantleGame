@@ -130,7 +130,7 @@ namespace SemantleGame.ViewModels
             // 다 통과하면 코사인 유사도 계산
             float sim = CalculateCos(_WordDic[InputWord], _WordDic[_Ans]);
             if (_RankingMap.ContainsKey(InputWord)) rank = _RankingMap[InputWord];
-            else rank = 1000;
+            else rank = 1001;
 
             UserLogModel user = new UserLogModel(cnt, InputWord, sim, rank);
             InputHistory.Add(user);
